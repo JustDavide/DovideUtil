@@ -17,7 +17,9 @@ public class Util {
         // For HEX Colors
         text = getHEXString(text);
         //Normal colorize
-        return ChatColor.translateAlternateColorCodes('&', text);
+        text = ChatColor.translateAlternateColorCodes('&', text);
+
+        return text.replaceAll("&", "");
     }
 
     /**
@@ -32,8 +34,6 @@ public class Util {
             text = text.replace(newText, ChatColor.of(newText) + "");
             match = pattern.matcher(text);
         }
-
-        text = text.replaceAll("&", "");
         return text;
     }
 
