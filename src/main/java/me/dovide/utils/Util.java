@@ -33,6 +33,7 @@ public class Util {
             match = pattern.matcher(text);
         }
 
+        text = text.replaceAll("&", "");
         return text;
     }
 
