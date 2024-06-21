@@ -65,4 +65,12 @@ public class Util {
         return sb.toString().trim();
     }
 
+    public static List<String> enumToString(Class<? extends Enum<?>> e){
+        List<String> names = new ArrayList<>();
+        for(Enum<?> enumConst : e.getEnumConstants()){
+            names.add(enumConst.name());
+        }
+        return names;
+    }
+
 }
