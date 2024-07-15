@@ -3,6 +3,7 @@ package me.dovide.utils;
 import net.md_5.bungee.api.ChatColor;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,7 +26,6 @@ public class Util {
     }
 
     /**
-     *
      * @param text Hex String
      * @return Colored Hex String
      */
@@ -67,12 +67,26 @@ public class Util {
         return sb.toString().trim();
     }
 
+    /**
+     * @param e Enum.class
+     * @return a list of all the Enum entries
+     */
+
     public static List<String> enumToString(Class<? extends Enum<?>> e){
         List<String> names = new ArrayList<>();
         for(Enum<?> enumConst : e.getEnumConstants()){
             names.add(enumConst.name());
         }
         return names;
+    }
+
+    /**
+     * @see java.lang.String
+     * @return Formatted String With Colors
+     */
+
+    public static String format(String format, Object... args) {
+        return Util.cc(new Formatter().format(format, args).toString());
     }
 
 }
