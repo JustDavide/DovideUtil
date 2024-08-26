@@ -11,6 +11,11 @@ import java.util.regex.Pattern;
 public class Util {
 
     private static final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+    private static final char[] SMALL_CAPS_MAPPING = {
+            'ᴀ', 'ʙ', 'ᴄ', 'ᴅ', 'ᴇ', 'ғ', 'ɢ', 'ʜ', 'ɪ', 'ᴊ', 'ᴋ', 'ʟ', 'ᴍ', 'ɴ', 'ᴏ', 'ᴘ',
+            'ǫ', 'ʀ', 's', 'ᴛ', 'ᴜ', 'ᴠ', 'ᴡ', 'x', 'ʏ', 'ᴢ'
+    };
+
 
     /**
      * @param text Text with Bukkit ColorChat (EX: &cHello)
@@ -87,6 +92,32 @@ public class Util {
 
     public static String format(String format, Object... args) {
         return Util.cc(new Formatter().format(format, args).toString());
+    }
+
+    /**
+     *
+     * @param input
+     * @return Small Caps Text
+     */
+
+    public static String toSmallCaps(String input) {
+        StringBuilder smallCapsText = new StringBuilder();
+
+        for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                char lowerCaseChar = Character.toLowerCase(c);
+
+                if (lowerCaseChar >= 'a' && lowerCaseChar <= 'z') {
+                    smallCapsText.append(SMALL_CAPS_MAPPING[lowerCaseChar - 'a']);
+                } else {
+                    smallCapsText.append(c);
+                }
+            } else {
+                smallCapsText.append(c);
+            }
+        }
+
+        return smallCapsText.toString();
     }
 
 }
