@@ -39,8 +39,8 @@ public class Util {
         while (match.find()) {
             String newText = text.substring(match.start(), match.end());
             text = text.replace(newText, ChatColor.of(newText) + "");
-            text = text.replace("<", "");
-            text = text.replace(">", "");
+            text = text.replaceAll("<", "");
+            text = text.replaceAll(">", "");
             match = pattern.matcher(text);
         }
         return text;
@@ -94,32 +94,6 @@ public class Util {
 
     public static String format(String format, Object... args) {
         return Util.cc(new Formatter().format(format, args).toString());
-    }
-
-    /**
-     *
-     * @param input
-     * @return Small Caps Text
-     */
-
-    public static String toSmallCaps(String input) {
-        StringBuilder smallCapsText = new StringBuilder();
-
-        for (char c : input.toCharArray()) {
-            if (Character.isLetter(c)) {
-                char lowerCaseChar = Character.toLowerCase(c);
-
-                if (lowerCaseChar >= 'a' && lowerCaseChar <= 'z') {
-                    smallCapsText.append(SMALL_CAPS_MAPPING[lowerCaseChar - 'a']);
-                } else {
-                    smallCapsText.append(c);
-                }
-            } else {
-                smallCapsText.append(c);
-            }
-        }
-
-        return smallCapsText.toString();
     }
 
 }
