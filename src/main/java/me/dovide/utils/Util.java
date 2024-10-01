@@ -39,6 +39,8 @@ public class Util {
         while (match.find()) {
             String newText = text.substring(match.start(), match.end());
             text = text.replace(newText, ChatColor.of(newText) + "");
+            text = text.replace("<", "");
+            text = text.replace(">", "");
             match = pattern.matcher(text);
         }
         return text;
