@@ -11,11 +11,6 @@ import java.util.regex.Pattern;
 public class Util {
 
     private static final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
-    private static final char[] SMALL_CAPS_MAPPING = {
-            'ᴀ', 'ʙ', 'ᴄ', 'ᴅ', 'ᴇ', 'ғ', 'ɢ', 'ʜ', 'ɪ', 'ᴊ', 'ᴋ', 'ʟ', 'ᴍ', 'ɴ', 'ᴏ', 'ᴘ',
-            'ǫ', 'ʀ', 's', 'ᴛ', 'ᴜ', 'ᴠ', 'ᴡ', 'x', 'ʏ', 'ᴢ'
-    };
-
 
     /**
      * @param text Text with Bukkit ColorChat (EX: &cHello)
