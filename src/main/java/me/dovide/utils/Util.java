@@ -22,7 +22,7 @@ public class Util {
         //Normal colorize
         text = ChatColor.translateAlternateColorCodes('&', text);
 
-        return text.replaceAll("&", "");
+        return text.replace("&", "");
     }
 
     /**
@@ -31,14 +31,13 @@ public class Util {
      */
     private static String getHEXString(String text) {
         Matcher match = pattern.matcher(text);
+        StringBuffer buffer = new StringBuffer();
         while (match.find()) {
-            String newText = text.substring(match.start(), match.end());
-            text = text.replace(newText, ChatColor.of(newText) + "");
-            text = text.replaceAll("<", "");
-            text = text.replaceAll(">", "");
-            match = pattern.matcher(text);
+            String colorCode = match.group(); // Get matched HEX code
+            match.appendReplacement(buffer, ChatColor.of(colorCode).toString());
         }
-        return text;
+        match.appendTail(buffer);
+        return buffer.toString();
     }
 
     /**
